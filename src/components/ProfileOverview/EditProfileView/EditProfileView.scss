@@ -1,0 +1,24 @@
+.EditProfileView {
+  margin-top: 10px;
+  padding: 10px;
+  box-shadow: var(--elevation2);
+  border-radius: var(--border-radius2);
+  max-height: calc(50vh - 150px);
+  overflow-y: scroll;
+
+  .field {
+    margin-bottom: 10px;
+
+    label {
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  .buttonGroup {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

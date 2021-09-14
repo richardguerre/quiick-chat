@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "default": "quiick-chat-dev",
+    "dev": "quiick-chat-dev",
+    "prod": "quiick-chat"
+  }
+}

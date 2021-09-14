@@ -1,0 +1,136 @@
+.IndexPage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+
+  .signout {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+  }
+
+  .WaitingView {
+    .center-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: calc(300px + 200px + 300px);
+
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      & > * {
+        margin: 0 20px;
+      }
+
+      .callPending {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        // & > div {
+        //   margin-top: -10px;
+        // }
+
+        .callActions {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+
+          & > * {
+            margin: 0 5px;
+          }
+
+          .declineButton {
+            .sayWhy {
+              margin-top: 15px;
+              position: absolute;
+              width: 300px;
+              display: flex;
+              flex-direction: row;
+              transform: translateX(calc(-50% + 75px));
+
+              .Button {
+                margin-left: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      box-sizing: border-box;
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+
+      .allow-notifications {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        sub {
+          margin-right: 10px;
+        }
+      }
+
+      .share-link {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+
+        sub {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .EndView {
+    width: 100%;
+    height: 100%;
+    .centerContainer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+  }
+}
+
+@media only screen and (max-width: 1330px) {
+  .IndexPage {
+    .center-container {
+      flex-direction: column;
+
+      .ProfileOverview {
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .IndexPage {
+    .signout {
+      right: -40px;
+      top: initial;
+      bottom: 10px;
+      transform: translateX(-50%);
+    }
+  }
+}

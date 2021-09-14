@@ -1,0 +1,68 @@
+.App {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1920px;
+  .splashscreen {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    transition: all 1s;
+
+    .Logo {
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      z-index: 100;
+      transition: all 0.5s;
+    }
+
+    .loader {
+      position: absolute;
+      left: 50px;
+      top: 50px;
+      transform: translate(0, calc(-50% + 35px));
+      opacity: 0;
+      transition: all 0.3s;
+    }
+  }
+
+  .splashscreenLoading {
+    z-index: 900;
+
+    .Logo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+    }
+
+    .loader {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% + 35px));
+      opacity: 1;
+    }
+  }
+
+  .content {
+    opacity: 1;
+    transition: all 1s;
+  }
+
+  .contentLoading {
+    opacity: 0;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    .splashscreen {
+      .Logo {
+        left: 50%;
+        top: 5%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}

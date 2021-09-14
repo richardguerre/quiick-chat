@@ -1,0 +1,39 @@
+.TextField {
+  background-color: var(--container);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  transition: 0.3s;
+
+  .adornment {
+    padding: 10px;
+    padding-right: 5px;
+    background-color: var(--brand-primary0);
+    font-size: 16px;
+    color: var(--light-subtext);
+  }
+
+  input {
+    padding: 10px;
+    border: none;
+    background: none;
+    color: inherit;
+    caret-color: inherit;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &::placeholder {
+      color: var(--light-subtext);
+    }
+  }
+}
+
+.error {
+  color: var(--denotive-error, red);
+}

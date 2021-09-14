@@ -1,0 +1,11 @@
+.CopyLink {
+  display: flex;
+  .TextField {
+    width: auto;
+    margin-right: 10px;
+    min-width: 25ch;
+    input {
+      text-overflow: ellipsis;
+    }
+  }
+}

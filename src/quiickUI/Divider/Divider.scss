@@ -1,0 +1,12 @@
+.Divider {
+  border-top: 3px solid var(--light-container);
+  width: 100%;
+  height: 3px;
+}
+
+.vertical {
+  border-top: none;
+  border-left: 3px solid var(--light-container);
+  width: 3px;
+  height: 100%;
+}

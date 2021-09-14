@@ -1,0 +1,42 @@
+.Button {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background-color: var(--brand-primary0);
+  color: var(--dark-background);
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 3px rgba(0, 18, 24, 0.25);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .ButtonStartIcon {
+    margin-right: 10px;
+    position: relative;
+    top: 1.5px;
+  }
+
+  .ButtonEndIcon {
+    margin-left: 10px;
+    position: relative;
+    top: 1.5px;
+  }
+
+  &:hover {
+    background-color: var(--brand-primary1);
+    box-shadow: 0px 3px 9px rgba(0, 18, 24, 0.25);
+  }
+
+  &:active {
+    background-color: var(--brand-primary-1);
+  }
+
+  &:disabled {
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}

@@ -1,0 +1,28 @@
+.Message {
+  animation: fadeIn ease 0.5s;
+  padding: 10px;
+  width: fit-content;
+  max-width: 70%;
+  border-radius: 10px 10px 10px 0;
+  background-color: var(--light-container);
+  align-self: flex-start;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+
+.sender {
+  border-radius: 10px 10px 0 10px;
+  background-color: var(--brand-primary0);
+  align-self: flex-end;
+  margin-right: 5px;
+  margin-left: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

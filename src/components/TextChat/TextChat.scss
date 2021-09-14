@@ -1,0 +1,25 @@
+.TextChat {
+  width: 100%;
+  .messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .startBySaying {
+      align-self: center;
+      margin-bottom: 10px;
+      position: relative;
+      left: -50px;
+    }
+  }
+
+  .input {
+    display: flex;
+    flex-direction: row;
+
+    .TextField {
+      flex-grow: 1;
+      margin-right: 5px;
+    }
+  }
+}

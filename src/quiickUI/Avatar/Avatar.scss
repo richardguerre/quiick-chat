@@ -1,0 +1,27 @@
+.Avatar {
+  --size: 100px;
+  --font-ratio: 2;
+
+  height: var(--size);
+  width: var(--size);
+  border-radius: 50%;
+  background-color: var(--dark-background);
+  color: var(--dark-text);
+  overflow: hidden;
+
+  .initials {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: calc(var(--size) / var(--font-ratio));
+    line-height: calc(var(--size) / var(--font-ratio));
+    font-weight: 500;
+  }
+
+  img {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+  }
+}

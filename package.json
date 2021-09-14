@@ -1,0 +1,72 @@
+{
+  "name": "quiickchat",
+  "version": "0.3.1",
+  "private": true,
+  "scripts": {
+    "setup": "npm install && cp .env.example .env.local && npm run in:local",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "in:local": "cp .env.local .env",
+    "in:dev": "cp .env.dev .env",
+    "in:prod": "cp .env.prod .env",
+    "prettier": "prettier --write \"./**/*.{scss,json,ts,tsx}\"",
+    "fireward:types": "fireward -i src/utils/firestore/firestore.ward --lang=typescript > src/utils/firestore/generatedTypes.ts",
+    "fireward:rules": "fireward -i src/utils/firestore/firestore.ward > src/utils/firestore/firestore.rules",
+    "fireward": "npm run fireward:types && npm run fireward:rules",
+    "deploy:hosting:dev": "npm run in:dev && npm run build && firebase use dev && firebase deploy --only hosting",
+    "deploy:hosting:prod": "npm run in:prod && npm run build && firebase use prod && firebase deploy --only hosting",
+    "deploy:firestore:dev": "npm run in:dev && npm run fireward && firebase use dev && firebase deploy --only firestore:rules",
+    "deploy:firestore:prod": "npm run in:prod && npm run fireward && firebase use prod && firebase deploy --only firestore:rules"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^12.12.58",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-fade-in": "^0.1.0",
+    "@types/react-router-dom": "^5.1.5",
+    "@types/shortid": "0.0.29",
+    "@types/simple-peer": "^9.6.0",
+    "firebase": "^8.2.7",
+    "node-sass": "^4.14.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-fade-in": "^1.1.0",
+    "react-hook-form": "^6.8.3",
+    "react-hookstore": "^1.5.0",
+    "react-icons": "^3.11.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "react-spinners": "^0.9.0",
+    "shortid": "^2.2.15",
+    "simple-peer": "^9.7.2",
+    "typescript": "^3.7.5"
+  },
+  "devDependencies": {
+    "firebase-tools": "^9.3.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "prettier": {
+    "printWidth": 150,
+    "arrowParens": "avoid"
+  }
+}

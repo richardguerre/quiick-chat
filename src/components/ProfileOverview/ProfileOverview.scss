@@ -1,0 +1,54 @@
+.ProfileOverview {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  & > * {
+    margin-bottom: 10px;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .usernamePresence {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    sub {
+      margin-right: 10px;
+    }
+
+    .presence {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin: 5px;
+      }
+
+      p {
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .socialLinks {
+    display: flex;
+    flex-direction: row;
+
+    & > * {
+      margin: 0 10px;
+    }
+  }
+
+  .welcomeMessage {
+    max-width: 300px;
+    text-align: center;
+  }
+}

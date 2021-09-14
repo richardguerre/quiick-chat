@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+* {
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  transition: 0.3s;
+  scrollbar-width: thin;
+  scrollbar-color: blue none;
+
+  &::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--brand-primary2);
+    border-radius: 20px;
+  }
+}
+
+body {
+  transition: none;
+  background-color: var(--light-background);
+  color: var(--light-text);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  --brand-primary2: #a3ffe3;
+  --brand-primary1: #69eec6;
+  --brand-primary0: #43e5b4;
+  --brand-primary-1: #21be8f;
+  --brand-primary-2: #229e79;
+  --light-background: #f3f9ff;
+  --dark-background: #15202a;
+  --light-container: #e0e9f1;
+  --dark-container: #273b4f;
+  --light-text: #15202a;
+  --dark-text: #f3f9ff;
+  --light-subtext: #5e6a77;
+  --dark-subtext: #bdcbd9;
+  --denotive-success: #41ffb8;
+  --denotive-error: #ff006e;
+  --light-disabled: #9aadbf;
+  --dark-disabled: #5a6876;
+  --elevation1: 0px 1px 3px rgba(0, 18, 24, 0.25);
+  --elevation2: 0px 3px 9px rgba(0, 18, 24, 0.25);
+  --elevation3: 0px 18px 35px rgba(0, 18, 24, 0.25);
+  --border-radius1: 5px;
+  --border-radius2: 10px;
+  --border-radius3: 20px;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 64px;
+  line-height: 75px;
+}
+
+h2 {
+  font-style: normal;
+  font-weight: medium;
+  font-size: 48px;
+  line-height: 56px;
+}
+
+h3 {
+  font-style: normal;
+  font-weight: medium;
+  font-size: 36px;
+  line-height: 42px;
+}
+
+h4 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 42px;
+}
+
+h5 {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+p {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  margin: 0;
+}
+
+sub {
+  font-style: normal;
+  font-size: 14px;
+  color: var(--light-subtext);
+
+  button {
+    font-size: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+a {
+  color: inherit;
+}

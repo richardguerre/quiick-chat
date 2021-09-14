@@ -1,0 +1,122 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function is____Timestamp(data, prev) {
+      return data is timestamp;
+    }
+    function is____User(data, prev) {
+      return data.keys().hasAll(['createdAt', 'updatedAt', 'name', 'username', 'presence', 'lastOnlineAt'])
+      && data.size() >= 6 && data.size() <= 10
+      && data.keys().hasOnly(['createdAt', 'updatedAt', 'name', 'username', 'presence', 'lastOnlineAt', 'avatar', 'chatLinks', 'socialLinks', 'welcomeMessage'])
+      && is____Timestamp(data['createdAt'], prev!=null && 'createdAt' in prev ? prev['createdAt'] : null)
+      && is____Timestamp(data['updatedAt'], prev!=null && 'updatedAt' in prev ? prev['updatedAt'] : null)
+      && data['name'] is string
+      && data['username'] is string
+      && (
+        data['presence'] == "online"
+        || data['presence'] == "offline"
+      )
+      && is____Timestamp(data['lastOnlineAt'], prev!=null && 'lastOnlineAt' in prev ? prev['lastOnlineAt'] : null)
+      && (
+        !data.keys().hasAny(['avatar'])
+        || data['avatar'].size() >= 0 && data['avatar'].size() <= 1
+        && data['avatar'].keys().hasOnly(['URL'])
+        && (
+          !data['avatar'].keys().hasAny(['URL'])
+          || data['avatar']['URL'] is string
+        )
+      )
+      && (
+        !data.keys().hasAny(['chatLinks'])
+        || data['chatLinks'].size() >= 0 && data['chatLinks'].size() <= 2
+        && data['chatLinks'].keys().hasOnly(['zoom', 'googleMeet'])
+        && (
+          !data['chatLinks'].keys().hasAny(['zoom'])
+          || data['chatLinks']['zoom'] is string
+        )
+        && (
+          !data['chatLinks'].keys().hasAny(['googleMeet'])
+          || data['chatLinks']['googleMeet'] is string
+        )
+      )
+      && (
+        !data.keys().hasAny(['socialLinks'])
+        || data['socialLinks'].size() >= 0 && data['socialLinks'].size() <= 4
+        && data['socialLinks'].keys().hasOnly(['linkedIn', 'twitter', 'instagram', 'other'])
+        && (
+          !data['socialLinks'].keys().hasAny(['linkedIn'])
+          || data['socialLinks']['linkedIn'] is string
+        )
+        && (
+          !data['socialLinks'].keys().hasAny(['twitter'])
+          || data['socialLinks']['twitter'] is string
+        )
+        && (
+          !data['socialLinks'].keys().hasAny(['instagram'])
+          || data['socialLinks']['instagram'] is string
+        )
+        && (
+          !data['socialLinks'].keys().hasAny(['other'])
+          || data['socialLinks']['other'] is list
+        )
+      )
+      && (
+        !data.keys().hasAny(['welcomeMessage'])
+        || data['welcomeMessage'] is string
+      );
+    }
+    function is____TextChat(data, prev) {
+      return data.keys().hasAll(['id', 'uid', 'message'])
+      && data.size() >= 3 && data.size() <= 4
+      && data.keys().hasOnly(['id', 'uid', 'message', 'leftAsMessage'])
+      && data['id'] is string
+      && data['uid'] is string
+      && data['message'] is string
+      && (
+        !data.keys().hasAny(['leftAsMessage'])
+        || data['leftAsMessage'] is bool
+      );
+    }
+    function is____Chat(data, prev) {
+      return data.keys().hasAll(['createdAt', 'updatedAt', 'callerName', 'startedChatAt'])
+      && data.size() >= 4 && data.size() <= 6
+      && data.keys().hasOnly(['createdAt', 'updatedAt', 'callerName', 'startedChatAt', 'textChat', 'peerConnection'])
+      && is____Timestamp(data['createdAt'], prev!=null && 'createdAt' in prev ? prev['createdAt'] : null)
+      && is____Timestamp(data['updatedAt'], prev!=null && 'updatedAt' in prev ? prev['updatedAt'] : null)
+      && data['callerName'] is string
+      && is____Timestamp(data['startedChatAt'], prev!=null && 'startedChatAt' in prev ? prev['startedChatAt'] : null)
+      && (
+        !data.keys().hasAny(['textChat'])
+        || data['textChat'] is list
+      )
+      && (
+        !data.keys().hasAny(['peerConnection'])
+        || data['peerConnection'].size() >= 0 && data['peerConnection'].size() <= 2
+        && data['peerConnection'].keys().hasOnly(['offer', 'answer'])
+        && (
+          !data['peerConnection'].keys().hasAny(['offer'])
+          || true
+        )
+        && (
+          !data['peerConnection'].keys().hasAny(['answer'])
+          || true
+        )
+      );
+    }
+    match /users/{userId} {
+      function is______PathType(data, prev) {
+        return is____User(data, prev!=null ? prev : null);
+      }
+      allow read: if request.auth != null;
+      allow write: if is______PathType(request.resource.data, resource==null ? null : resource.data) && (request.auth.uid == userId);
+      match /chats/{chatId} {
+        function is______PathType(data, prev) {
+          return is____Chat(data, prev!=null ? prev : null);
+        }
+        allow read: if request.auth != null;
+        allow write: if is______PathType(request.resource.data, resource==null ? null : resource.data) && (request.auth != null);
+      }
+    }
+  }
+}

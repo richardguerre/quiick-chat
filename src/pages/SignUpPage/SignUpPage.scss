@@ -1,0 +1,35 @@
+.SignUpPage {
+  height: 100vh;
+  position: relative;
+
+  .container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h2 {
+      margin-top: -50%;
+    }
+
+    .AuthButtons {
+      width: 300px;
+      margin-bottom: 10px;
+    }
+
+    sub {
+      a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

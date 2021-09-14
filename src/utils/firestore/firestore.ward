@@ -1,0 +1,55 @@
+rules_version = '2'
+
+type Timestamp = timestamp
+
+type User = {
+  createdAt: Timestamp
+  updatedAt: Timestamp
+  name: string
+  username: string
+  presence: "online" | "offline"
+  lastOnlineAt: Timestamp
+  avatar?: {
+    URL?: string
+  }
+  chatLinks?: {
+    zoom?: string
+    googleMeet?: string
+  }
+  socialLinks?: {
+    linkedIn?: string
+    twitter?: string
+    instagram?: string
+    other?: string[]
+  }
+  welcomeMessage?: string
+}
+
+type TextChat = {
+  id: string
+  uid: string
+  message: string
+  leftAsMessage?: bool
+}
+
+type Chat = {
+  createdAt: Timestamp
+  updatedAt: Timestamp
+  callerName: string
+  startedChatAt: Timestamp
+  textChat?: TextChat[]
+  peerConnection?: {
+    offer?: any
+    answer?: any
+  }
+}
+
+match /users/{userId} is User {
+  allow read: if request.auth != null;
+  allow write: if request.auth.uid == userId;
+
+  match /chats/{chatId} is Chat {
+    allow read: if request.auth != null; 
+    allow write: if request.auth != null;
+  }
+}

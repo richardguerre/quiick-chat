@@ -1,0 +1,68 @@
+.AskNameView {
+  height: 80%;
+  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+
+  --right-width: 400px;
+  .left-container {
+    --margin-right: 40px;
+    min-width: 400px;
+    width: calc(100% - var(--right-width) - var(--margin-right));
+    max-width: 500px;
+
+    .askInfo {
+      .TextField {
+        margin-top: 5px;
+        margin-bottom: 20px;
+      }
+    }
+
+    .continueAs {
+      h3 {
+        margin: 0;
+        margin-bottom: 5px;
+      }
+      p {
+        margin-bottom: 10px;
+      }
+      .buttons {
+        display: flex;
+        flex-direction: row;
+
+        .Button:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .right-container {
+    width: var(--right-width);
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .AskNameView {
+    width: 85%;
+    height: 70%;
+    align-items: flex-start;
+    .left-container {
+      min-width: 100%;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    .right-container {
+      width: 100%;
+    }
+  }
+}
